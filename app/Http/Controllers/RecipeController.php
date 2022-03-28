@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RecipeFormRequest;
+use App\Http\Resources\RecipeCollection;
+use App\Http\Resources\RecipeResource;
 use App\Models\Recipe;
-use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function index(): Collection
+    public function index(): RecipeCollection
     {
-        return Recipe::all();
+        return new RecipeCollection(Recipe::all());
     }
 
     public function store(RecipeFormRequest $request)
@@ -23,9 +24,9 @@ class RecipeController extends Controller
         $recipe->update($request->validated());
     }
 
-    public function show($recipeId)
+    public function show(Recipe $recipe): RecipeResource
     {
-        return Recipe::where('id', $recipeId);
+        return new RecipeResource($recipe);
     }
 
     public function delete(Recipe $recipe)
