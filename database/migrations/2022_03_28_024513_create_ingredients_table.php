@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->integer('recipe_id')->index()->nullable();
-            $table->integer('grocery_id')->index()->nullable();
+            $table->integer('grocery_list_id')->index()->nullable();
             $table->string('name');
             $table->string('quantity');
             $table->string('unit_measure');
