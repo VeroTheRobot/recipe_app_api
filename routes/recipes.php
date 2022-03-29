@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,8 +14,10 @@ Route::prefix('recipes')->group(function () {
         Route::delete('/', [RecipeController::class, 'delete'])->name('recipes.delete');
 
         Route::prefix('/ingredients')->group(function () {
-            Route::get('/', [RecipeController::class, 'showIngredients'])->name('ingredients.show');
-            Route::post('/', [RecipeController::class, 'addIngredient'])->name('ingredients.store');
+            Route::get('/', [IngredientController::class, 'index'])->name('ingredients.index');
+            Route::post('/', [IngredientController::class, 'store'])->name('ingredients.store');
+            Route::get('/{ingredient}', [IngredientController::class, 'show'])->name('ingredients.show');
+            Route::delete('/{ingredient}', [IngredientController::class, 'delete'])->name('ingredients.delete');
         });
     });
 });

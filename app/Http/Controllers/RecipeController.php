@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\IngredientFormRequest;
 use App\Http\Requests\RecipeFormRequest;
-use App\Http\Resources\IngredientCollection;
 use App\Http\Resources\RecipeCollection;
 use App\Http\Resources\RecipeResource;
-use App\Models\Ingredient;
 use App\Models\Recipe;
 
 class RecipeController extends Controller
@@ -30,16 +27,6 @@ class RecipeController extends Controller
     public function show(Recipe $recipe): RecipeResource
     {
         return new RecipeResource($recipe);
-    }
-
-    public function showIngredients(Recipe $recipe):IngredientCollection
-    {
-        return new IngredientCollection($recipe->ingredients());
-    }
-
-    public function addIngredient(Recipe $recipe, IngredientFormRequest $request)
-    {
-        $recipe->ingredients()->create($request->validated());
     }
 
     public function delete(Recipe $recipe)
