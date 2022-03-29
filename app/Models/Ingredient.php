@@ -23,7 +23,7 @@ class Ingredient extends Model
         return $this->belongsTo(Recipe::class);
     }
 
-    public function grocery(): BelongsTo
+    public function groceryList(): BelongsTo
     {
         return $this->belongsTo(GroceryList::class);
     }
