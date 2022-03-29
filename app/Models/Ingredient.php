@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Ingredient extends Model
 {
@@ -12,19 +12,14 @@ class Ingredient extends Model
 
     protected $fillable = [
         'name',
-        'recipe_id',
-        'grocery_list_id',
         'quantity',
         'unit_measure',
+        'ingredientable_id',
+        'ingredientable_type',
     ];
 
-    public function recipe(): BelongsTo
+    public function ingredientable(): MorphTo
     {
-        return $this->belongsTo(Recipe::class);
-    }
-
-    public function groceryList(): BelongsTo
-    {
-        return $this->belongsTo(GroceryList::class);
+        return $this->morphTo();
     }
 }

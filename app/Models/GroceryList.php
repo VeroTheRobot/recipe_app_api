@@ -3,10 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class GroceryList extends Model
+class GroceryList extends Ingredientable
 {
     use HasFactory;
 
@@ -18,8 +16,8 @@ class GroceryList extends Model
         'creation_date' => 'datetime:Y-m-d',
     ];
 
-    public function ingredients(): HasMany
+    public static function getClassName(): string
     {
-        return $this->hasMany(Ingredient::class);
+        return (new \ReflectionClass(GroceryList::class))->getShortName();
     }
 }

@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Recipe extends Model
+class Recipe extends Ingredientable
 {
     use HasFactory;
 
@@ -16,15 +14,15 @@ class Recipe extends Model
         'notes'
     ];
 
-    public function ingredients(): HasMany
-    {
-        return $this->hasMany(Ingredient::class);
-    }
-
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => ucfirst($value),
+            get: fn($value) => ucfirst($value),
         );
+    }
+
+    public static function getClassName(): string
+    {
+        return (new \ReflectionClass(Recipe::class))->getShortName();
     }
 }

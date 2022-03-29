@@ -4,19 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
-            $table->integer('recipe_id')->index()->nullable();
-            $table->integer('grocery_list_id')->index()->nullable();
+            $table->integer('ingredientable_id')->index();
+            $table->string('ingredientable_type');
             $table->string('name');
             $table->string('quantity');
             $table->string('unit_measure');
@@ -26,7 +24,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down()

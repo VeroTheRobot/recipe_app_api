@@ -4,17 +4,24 @@ namespace Database\Factories;
 
 use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use JetBrains\PhpStorm\ArrayShape;
 
 
 class RecipeFactory extends Factory
 {
     protected $model = Recipe::class;
 
-    public function definition()
+    #[ArrayShape([
+        'user_id' => "int",
+        'name'    => "array|string",
+        'notes'   => "string"
+    ])]
+    public function definition(): array
     {
         return [
-            'name'  => $this->faker->words(3, true),
-            'notes' => $this->faker->paragraph(3),
+            'user_id' => 1,
+            'name'    => $this->faker->words(3, true),
+            'notes'   => $this->faker->paragraph(2),
         ];
     }
 }

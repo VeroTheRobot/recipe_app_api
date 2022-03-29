@@ -13,7 +13,7 @@ class IngredientSeeder extends Seeder
         foreach (Recipe::all() as $recipe) {
             Ingredient::factory()->count(10)->create(
                 [
-                    'recipe_id' => $recipe->id,
+                    'ingredientable_id' => $recipe->id,
                 ]
             );
         }
