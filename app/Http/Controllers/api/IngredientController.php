@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\IngredientFormRequest;
 use App\Http\Resources\IngredientCollection;
 use App\Http\Resources\IngredientResource;

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RecipeFormRequest;
 use App\Http\Resources\RecipeCollection;
 use App\Http\Resources\RecipeResource;
@@ -29,7 +30,7 @@ class RecipeController extends Controller
         return new RecipeResource($recipe);
     }
 
-    public function delete(Recipe $recipe)
+    public function destroy(Recipe $recipe)
     {
         $recipe->delete();
     }

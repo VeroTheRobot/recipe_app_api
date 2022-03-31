@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\GroceryListCollection;
 use App\Http\Resources\GroceryListResource;
 use App\Models\GroceryList;
-use Illuminate\Http\Request;
 
 class GroceryListController extends Controller
 {

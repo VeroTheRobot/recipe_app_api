@@ -21,6 +21,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
-require __DIR__.'/recipes.php';
-require __DIR__.'/groceries.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/app/recipes.php';
+require __DIR__ . '/app/groceries.php';
