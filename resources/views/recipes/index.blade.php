@@ -9,15 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <ul>
-                        @foreach ($recipes as $recipe)
-                            <li>
-                                <a href="{{ route('recipes.show', $recipe->id) }}">
-                                    {{ $recipe->name }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                    @foreach ($recipes as $recipe)
+                        <a href="{{ route('recipes.show', $recipe->id) }}">
+                            <x-recipe-thumbnail :recipe='$recipe'></x-recipe-thumbnail>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

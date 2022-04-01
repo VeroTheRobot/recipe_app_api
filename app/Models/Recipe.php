@@ -11,7 +11,8 @@ class Recipe extends Ingredientable
 
     protected $fillable = [
         'name',
-        'notes'
+        'notes',
+        'image_path',
     ];
 
     protected function name(): Attribute

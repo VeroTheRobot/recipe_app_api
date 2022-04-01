@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->integer('user_id')->index();
             $table->string('name');
             $table->string('notes');
+            $table->string('image_path')->default('assets/no-image-icon.png');
             $table->timestamps();
         });
     }
