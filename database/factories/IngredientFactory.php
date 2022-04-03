@@ -32,7 +32,7 @@ class IngredientFactory extends Factory
                     'teaspoons'
                 ]
             ),
-            'ingredientable_type' => Recipe::getClassName(),
+            'ingredientable_type' => Recipe::class,
         ];
     }
 }
