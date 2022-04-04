@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\app;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\RecipeFormRequest;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Auth;
+
+use function redirect;
+use function view;
 
 
 class RecipeController extends Controller
@@ -28,7 +31,7 @@ class RecipeController extends Controller
     {
         $request = $request->validated();
 
-        $recipe = Recipe::create(
+        $recipe = Auth::user()->recipes()->create(
             [
                 'name'  => $request['name'],
                 'notes' => $request['notes'],
@@ -40,7 +43,7 @@ class RecipeController extends Controller
                 [
                     'name'         => $ingredient['name'],
                     'quantity'     => $ingredient['quantity'],
-                    'unit_measure' => $ingredient['unit_measure'],
+                    'unit_measure' => $ingredient['unit_measure'] ?? '',
                 ]
             );
         }

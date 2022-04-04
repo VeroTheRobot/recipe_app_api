@@ -18,6 +18,17 @@ class Ingredient extends Model
         'ingredientable_type',
     ];
 
+    public static array $UNIT_MEASURES = [
+        'N/A',
+        'cups',
+        'oz',
+        'tsp',
+        'tbsp',
+        'lbs',
+        'gr',
+        'kg'
+    ];
+
     public function ingredientable(): MorphTo
     {
         return $this->morphTo();

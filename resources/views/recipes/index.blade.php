@@ -3,13 +3,13 @@
         {{ __('recipes.index.title') }}
     </x-slot>
 
-    <a class="mb-2" href="{{ route('recipes.create') }}">
-        {{ __('recipes.create.title') }}
+    <a class="mb-2 pt-2 flex items-center justify-end" href="{{ route('recipes.create') }}">
+        <i class="fa-solid fa-circle-plus fa-xl"></i>
     </a>
 
-    @foreach ($recipes as $recipe)
-        <a href="{{ route('recipes.show', $recipe->id) }}">
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4 p-6">
+        @foreach ($recipes as $recipe)
             <x-recipe-thumbnail :recipe='$recipe'></x-recipe-thumbnail>
-        </a>
-    @endforeach
+        @endforeach
+    </div>
 </x-main>

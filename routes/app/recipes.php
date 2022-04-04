@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\app\RecipeController;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('recipes')->middleware(['auth'])->group(function () {

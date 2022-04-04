@@ -10,12 +10,13 @@ class RecipeFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'                       => 'string|required',
-            'notes'                      => 'string|nullable',
+            'name'                       => 'bail|required|string',
+            'notes'                      => 'bail|nullable|string',
             'ingredients'                => 'array|required',
             'ingredients.*'              => 'array|required',
-            'ingredients.*.quantity'     => 'numeric|required',
-            'ingredients.*.unit_measure' => 'string|nullable'
+            'ingredients.*.name'         => 'bail|required|string',
+            'ingredients.*.quantity'     => 'bail|required|numeric',
+            'ingredients.*.unit_measure' => 'bail|nullable|string'
         ];
     }
 }
